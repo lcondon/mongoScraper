@@ -31,7 +31,6 @@ app.get(['/', '/home'], function (req, res) {
 
 app.get('/saved', function (req, res) {
     db.Article.find({ saved: true })
-        .populate('comments')
         .then(function (results) {
             res.render('saved', { articles: results })
         })
