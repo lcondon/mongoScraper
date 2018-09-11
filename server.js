@@ -72,28 +72,33 @@ app.delete('/comments', function (req, res) {
 })
 
 app.get("/articles", function (req, res) {
-    request("https://npr.org/sections/arts/", function (error, response, html) {
+    request("https://npr.org/", function (error, response, html) {
         var $ = cheerio.load(html);
         var results = [];
 
         $("article").each(function (i, element) {
             let result = {};
-
             result.title = $(element)
-                .children('.item-info')
-                .children('.title')
-                .children('a')
-                .text();
-            result.link = $(element)
-                .children('.item-info')
-                .children('.title')
-                .children('a')
-                .attr('href');
-            result.summary = $(element)
-                .children('.item-info')
-                .children('.teaser')
-                .children('a')
-                .text();
+            .children('.story-wrap')
+            .children('.story-text')
+            .children('a')
+            .first()
+            .children('.title')
+            .text();
+        result.link = $(element)
+            .children('.story-wrap')
+            .children('.story-text')
+            .children('a')
+            .first()
+            .attr('href');
+        result.summary = $(element)
+            .children('.story-wrap')
+            .children('.story-text')
+            .children('a')
+            .last()
+            .children('.teaser')
+            .text();
+            
             result.saved = false;
             if (result.title !== "" && result.summary !== "") {
                 db.Article.create(result, function (err, data) {
@@ -119,23 +124,20 @@ app.listen(PORT, function () {
     console.log("App running on port " + PORT + "!");
 });
 
+
+
 // result.title = $(element)
-//                 .children('.story-wrap')
-//                 .children('.story-text')
-//                 .children('a')
-//                 .first()
+//                 .children('.item-info')
 //                 .children('.title')
+//                 .children('a')
 //                 .text();
 //             result.link = $(element)
-//                 .children('.story-wrap')
-//                 .children('.story-text')
+//                 .children('.item-info')
+//                 .children('.title')
 //                 .children('a')
-//                 .first()
 //                 .attr('href');
 //             result.summary = $(element)
-//                 .children('.story-wrap')
-//                 .children('.story-text')
-//                 .children('a')
-//                 .last()
+//                 .children('.item-info')
 //                 .children('.teaser')
+//                 .children('a')
 //                 .text();
