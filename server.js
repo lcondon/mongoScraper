@@ -15,7 +15,7 @@ app.use(express.static("./public"));
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var MONGODB_URI = `mongodb://heroku_7qn0s5lc:gSvvQg3YAa9d2y8@ds251632.mlab.com:51632/heroku_7qn0s5lc`;
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1/mongoScraper";
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
