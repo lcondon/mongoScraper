@@ -1,0 +1,53 @@
+<div class="carousel" id="insertHere">
+    {{#each articles}}
+    <div class="carousel-item">
+        <div class="card hoverable small blue-grey">
+
+            <div class="card-content">
+                <span class="card-title"><a href='{{link}}' target="_blank" class='orange-text text-accent-2'>{{title}}</a></span>
+                <div class="cardParagraph white-text">{{summary}}</div>
+            </div>
+            <div class="card-action">
+                <a data-id="{{_id}}" class="deleteButton left" href="#">Delete Article</a>
+                <a data-id="{{_id}}" class="notesButton right modal-trigger" href="#modal1">Comments</a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<script>
+    var children = $('#insertHere').children().length;
+    if (children == 2) {
+        $('.carousel .carousel-item').last().addClass('non-active')
+    }
+    $('.carousel-item .card-content').on('click', function () {
+        $(this).toggleClass('non-active')
+        $(this).siblings().toggleClass('non-active')
+    })
+</script> {{#each articles}}
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Comments for this article</h4>
+        <ul class="collection" data-id="{{_id}}">
+        {{#each arrayOfComments}}
+        <li class="collection-item"><div><span class="textBody">{{this}}</span><a href="#!" class="secondary-content deleteComment" data-id="{{_id}}"><i class="material-icons">x</i></a></div></li>
+        {{/each}}
+        </ul>
+        <div class="row formRow">
+            <form class="col s12">
+                <div class="row formRow">
+                    <div class="input-field col s12" required>
+                        <textarea id="{{_id}}" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Comment Here</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat left">Close</a>
+        <a href="#!" data-id="{{_id}}" class="saveNote waves-effect waves-green btn-flat right">Save</a>
+    </div>
+</div>
+{{/each}}

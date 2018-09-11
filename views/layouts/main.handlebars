@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NPR Scraper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <body>
+        <style>
+            #nprLogo {
+                padding-left: 10pt;
+            }
+
+            #radioImage {
+                width: 90%;
+            }
+
+            #pageTitle {
+                color: #4e84c4;
+            }
+
+            .carousel-item,
+            .card {
+                width: 340px !important;
+                display: inline-block;
+            }
+
+            .carousel {
+                overflow: visible !important;
+                align-content: center;
+                align-items: center;
+            }
+
+            .cardParagraph {
+                line-height: 1.5em;
+                overflow: hidden;
+                width: 100%;
+            }
+
+            .section {
+                height: fit-content;
+            }
+
+            body {
+                margin-bottom: 5%;
+            }
+            .non-active {
+                opacity: 0.6 !important;
+            }
+            .formRow{
+                margin-bottom: 0;
+            }
+        </style>
+        <nav>
+            <div class="nav-wrapper red darken-3">
+                <a href="#" class="brand-logo" id="nprLogo">NPR Scraper</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/saved">Saved Articles</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="parallax-container">
+            <div class="parallax"><img src="./radioTower.jpg" id="radioImage"></div>
+        </div>
+        <div class="section white" id="cardContainer">
+            <div class="container">
+                <h2 class="header" id="pageTitle">NPR Scraper</h2>
+                <div>
+                    <a class="waves-effect waves-light btn-large red darken-3 clearArticles">Clear Articles</a>
+                    <a class="waves-effect waves-light btn-large red darken-3 scrapeArticles">Scrape New Articles</a>
+                </div>
+            </div>
+                {{{body}}}
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.parallax').parallax();
+                $('.carousel').carousel();
+                $('.modal').modal();
+            });
+        </script>
+        <script src="/app.js"></script>
+    </body>
+
+</html>
