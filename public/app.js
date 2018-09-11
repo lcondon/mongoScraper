@@ -50,7 +50,7 @@ $('.deleteButton').on('click', function(){
 
 $('.saveNote').on('click', function(){
     var id = $(this).attr('data-id');
-    var comment = $(`#${id}`).val().trim();
+    var comment = $(`#${id}Text`).val().trim();
     if (comment !== ''){
         $.ajax({
             method: "POST",
@@ -64,7 +64,7 @@ $('.saveNote').on('click', function(){
               window.location.assign('/saved')
             });
     } else {
-        
+
     }
     
 })

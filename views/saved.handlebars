@@ -9,27 +9,34 @@
             </div>
             <div class="card-action">
                 <a data-id="{{_id}}" class="deleteButton left" href="#">Delete Article</a>
-                <a data-id="{{_id}}" class="notesButton right modal-trigger" href="#modal1">Comments</a>
+                <a data-id="{{_id}}" class="notesButton right modal-trigger" href="#{{_id}}">Comments</a>
             </div>
         </div>
     </div>
     {{/each}}
 </div>
 
- {{#each articles}}
-<div id="modal1" class="modal">
+{{#each articles}}
+<div id="{{_id}}" class="modal">
     <div class="modal-content">
         <h4>Comments for this article</h4>
         <ul class="collection" data-id="{{_id}}">
-        {{#each arrayOfComments}}
-        <li class="collection-item"><div><span class="textBody">{{this}}</span><a href="#!" class="secondary-content deleteComment" data-id="{{_id}}"><i class="material-icons">x</i></a></div></li>
-        {{/each}}
+            {{#each arrayOfComments}}
+            <li class="collection-item">
+                <div><span class="textBody">{{this}}</span><a href="#!" class="secondary-content deleteComment" data-id="{{_id}}"><i
+                            class="material-icons">x</i></a></div>
+            </li>
+            {{else}}
+            <li class="collection-item">
+                <div><span class="textBody">No Comment</span></div>
+            </li>
+            {{/each}}
         </ul>
         <div class="row formRow">
             <form class="col s12">
                 <div class="row formRow">
                     <div class="input-field col s12" required>
-                        <textarea id="{{_id}}" class="materialize-textarea"></textarea>
+                        <textarea id="{{_id}}Text" class="materialize-textarea"></textarea>
                         <label for="textarea1">Comment Here</label>
                     </div>
                 </div>
