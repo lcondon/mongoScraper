@@ -1,25 +1,3 @@
-// $.getJSON("/articles", function (data) {
-//     // For each one
-//     for (var i = 0; i < data.length; i++) {
-//         // Display the apropos information on the page
-        
-//         $("#insertHere").append(`<div class="carousel-item">
-//         <div class="card">
-//           <div class="card-image">
-//             <img src="${data[i].photo}">
-//           </div>
-//           <div class="card-content">
-//           <span class="card-title"><a href='${data[i].link}'>${data[i].title}</a></span>
-//             <p>${data[i].summary}</p>
-//           </div>
-//           <div class="card-action">
-//           <a class='waves-effect waves-light btn-large green darken-1 right'>Save Article</a>
-//           </div>
-//         </div>
-//       </div>`);
-//     }
-// });
-
 $('.saveButton').on('click', function(){
     var id = $(this).attr('data-id');
     $.ajax({
