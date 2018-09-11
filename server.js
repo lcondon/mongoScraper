@@ -72,7 +72,7 @@ app.delete('/comments', function (req, res) {
 })
 
 app.get("/articles", function (req, res) {
-    request("https://npr.org/sections/news/", function (error, response, html) {
+    request("https://npr.org/sections/arts/", function (error, response, html) {
         var $ = cheerio.load(html);
         var results = [];
 
