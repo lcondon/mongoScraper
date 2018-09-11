@@ -16,16 +16,7 @@
     {{/each}}
 </div>
 
-<script>
-    var children = $('#insertHere').children().length;
-    if (children == 2) {
-        $('.carousel .carousel-item').last().addClass('non-active')
-    }
-    $('.carousel-item .card-content').on('click', function () {
-        $(this).toggleClass('non-active')
-        $(this).siblings().toggleClass('non-active')
-    })
-</script> {{#each articles}}
+ {{#each articles}}
 <div id="modal1" class="modal">
     <div class="modal-content">
         <h4>Comments for this article</h4>
